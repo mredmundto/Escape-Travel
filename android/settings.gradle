@@ -1,0 +1,3 @@
+rootProject.name = 'esc'
+
+include ':app'
