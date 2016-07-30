@@ -39,11 +39,11 @@ class esc extends Component {
 
   renderScene(route, navigator) {
     var Component = routes[route.name];
-
+    // route and passing the props into child and passing function to change the state in parents
     return <Component 
     route={route} 
-    navigator={navigator} 
-    username={this.state.username}
+    navigator={navigator} // this is being used in the Navigator component in line 55
+    username={this.state.username} 
     setName={this.state.setName}
     currentItinerary={this.state.currentItinerary}
     setCurrentItinerary={this.state.setCurrentItinerary}
@@ -54,9 +54,9 @@ class esc extends Component {
     return (
       <Navigator
         style={styles.container}
-        initialRoute={{name: 'signIn'}}
-        renderScene={this.renderScene.bind(this)}
-        configureScene={() => { return Navigator.SceneConfigs.FloatFromRight; }}
+        initialRoute={{name: 'signIn'}} // the first page
+        renderScene={this.renderScene.bind(this)} // invoking line 40
+        configureScene={() => { return Navigator.SceneConfigs.FloatFromRight; }} // the way a page being render 
         />
     );
   }

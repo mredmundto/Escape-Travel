@@ -10,7 +10,6 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-
 export default class viewAll extends Component{
   constructor(props){
     super(props);
@@ -23,6 +22,7 @@ export default class viewAll extends Component{
   }
 
   componentDidMount(){
+    // Ajax get request when page render
     this.getRequest ();
   }
 
@@ -49,22 +49,19 @@ export default class viewAll extends Component{
   }
 
   gotoViewOne(index){
+    // setting the current itinerary to show in view one page  
     this.props.setCurrentItinerary(index); 
     this.props.navigator.push({name: 'viewOne'});
   }
 
-  goToSignUp () {
-    this.props.navigator.push({name: 'signUp'});
-  }
-
   goToViewAll (){
-   // setting parent class 
+   // setting parent class once login 
    this.props.setName(this.state.username);
    this.props.navigator.push({name: 'viewAll'}); 
   }
 
   getRequest () {
-    
+    // Posting user Id to get all itineraries in response  
     fetch('https://esccc.herokuapp.com/classes/userItineraries', 
     {method: 'POST',
      headers: {
@@ -78,7 +75,6 @@ export default class viewAll extends Component{
       return response.json(); 
     }).then((data) => {
       this.setState({itineraries: data});
-      console.log('all itineraries', this.state.itineraries); 
     })
     .catch(function(err) {
       console.log('err', err);

@@ -32,7 +32,7 @@ export default class signIn extends Component{
   }
 
   componentDidMount(){ 
-
+    // similiar to document.ready where you invoke the function after the page render 
   }
 
   render() { 
@@ -94,7 +94,6 @@ export default class signIn extends Component{
    this.props.navigator.push({name: 'viewAll'}); 
   }
 
-  // refactoring the AJAX call here
   loginButton () {
     var data = {
       username: this.state.username,
@@ -113,6 +112,7 @@ export default class signIn extends Component{
       body: JSON.stringify(data)
     })
     .then(function(){
+      // this is for routing 
       this.goToViewAll();        
     }.bind(this));
   }

@@ -31,13 +31,11 @@ export default class viewOne extends Component{
       <View style={styles.container}>
       <ScrollView style={styles.container}>
 
-
-
         <TouchableHighlight
           style={styles.button}
           onPress={this.back.bind(this)}>
           <Text style={styles.welcome}>
-           Back to all trip
+           Back to all itineraries
            <Image source={this.state.pic} style={{width: 30, height: 30}}/> 
           </Text>
         </TouchableHighlight>
@@ -57,10 +55,12 @@ export default class viewOne extends Component{
   }
 
   back () {
+    // removing the current page
     this.props.navigator.pop();
   } 
 
   getRequest () {
+    // Posting the current Intineray id and to get the itinerary as response 
     fetch('https://esccc.herokuapp.com/classes/itineraryEvents', 
     {method: 'POST',
      headers: {
@@ -71,10 +71,9 @@ export default class viewOne extends Component{
      body: JSON.stringify({id: this.props.currentItinerary})
     })
     .then(function(response) {
-
       return response.json(); 
     }).then((data) => {
-      console.log('yelp data', data);
+      // then set the data in itineraries
       this.setState({yelp: data}); 
     })
     .catch(function(err) {
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
     margin: 5
   },
   image: {
-    justifyContent: "center",    //  <-- you can use "center", "flex-start",
+    justifyContent: "center",
     width: 120, 
     height: 120, 
     marginBottom: 10

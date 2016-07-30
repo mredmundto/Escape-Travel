@@ -96,16 +96,13 @@ export default class signIn extends Component{
   backToSignIn () {
     this.props.navigator.pop();
   }
-  // refactoring the AJAX call here
 
   goToCreate (){
-
    this.props.setName(this.state.username);
    this.props.navigator.push({name: 'create'}); 
   }
 
   signUp () {
-
     if (this.state.password === this.state.confirmPassword ){
       var data = {
         username: this.state.username,
@@ -124,7 +121,6 @@ export default class signIn extends Component{
         body: JSON.stringify(data)
       })
       .then(function(){
-        
         this.goToCreate();     
       }.bind(this));
     }else{
